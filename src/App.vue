@@ -1,5 +1,4 @@
 <script>
-import AppMain from './components/AppMain.vue';
 
 export default {
   name: "AppVue",
@@ -7,17 +6,20 @@ export default {
   data() {
     return {}
   },
-  components: {
-    AppMain,
-  }
 }
 </script>
 
 <template>
-  <div>
-    <h1>Api Laravel + Vue</h1>
-    <AppMain />
-  </div>
+  <h1>Api Laravel + Vue</h1>
+
+
+  <header>
+    <a href="/">Home</a>
+    <a href="/about-us">About us</a>
+    <a href="/projects">Projects</a>
+  </header>
+
+  <router-view></router-view>
 </template>
 
 <style scoped></style>
