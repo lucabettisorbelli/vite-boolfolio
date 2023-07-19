@@ -4,7 +4,13 @@ export default {
   name: "AppVue",
 
   data() {
-    return {}
+    return {
+      navLinks: [
+        { route: "AppHome", label: "Home" },
+        { route: "/about", label: "About Us" },
+        { route: "/projects", label: "Projects" }
+      ]
+    }
   },
 }
 </script>
@@ -14,9 +20,9 @@ export default {
 
 
   <header>
-    <a href="/">Home</a>
-    <a href="/about-us">About us</a>
-    <a href="/projects">Projects</a>
+    <div v-for="i in navLinks">
+      <router-link :to="{ name: i.route }">{{ i.label }}</router-link>
+    </div>
   </header>
 
   <router-view></router-view>
