@@ -73,7 +73,8 @@ export default {
         <h3 v-if="loadingError">{{ loadingError }}</h3>
 
         <div class="card" v-for="project in projects">
-            <h3>Titolo: {{ project.title }}</h3>
+            <h3>Titolo:</h3><router-link :to="{ name: '/single-project', params: { id: project.id } }">{{ project.title
+            }}</router-link>
             <h4>Tipo: {{ project.type ? project.type.name : "Nessuno" }}</h4>
             <div class="cardImage">
                 <img class="image" :src="project.image" alt="">
