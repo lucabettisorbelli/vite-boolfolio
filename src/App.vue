@@ -22,4 +22,22 @@ export default {
   <router-view></router-view>
 </template>
 
-<style scoped></style>
+<style scoped>
+header {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 20em;
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+
+  ::hover {
+    cursor: pointer;
+    color: aquamarine;
+  }
+}
+</style>
