@@ -1,12 +1,13 @@
 <script>
 import axios from "axios";
+import { store } from "../store";
 
 export default {
     name: "AppMain",
     data() {
         return {
+            store,
             chiave: "valore",
-            apiUrl: "http://127.0.0.1:8000/api/",
             loading: false,
             loadingError: false,
             projects: [],
@@ -17,7 +18,7 @@ export default {
     methods: {
         getProjectsFirstPage() {
             this.loading = true;
-            axios.get(this.apiUrl + "projects").then(response => {
+            axios.get(this.store.apiUrl + "projects").then(response => {
                 console.log(response.data);
                 this.projects = response.data.results.data;
                 this.projectsCurrentPage = response.data.results.current_page;
@@ -37,7 +38,7 @@ export default {
                     }
                 };
                 this.loading = true;
-                axios.get(this.apiUrl + "projects", config).then(response => {
+                axios.get(this.store.apiUrl + "projects", config).then(response => {
                     console.log(response.data);
                     this.projects = response.data.results.data;
                     this.projectsCurrentPage = response.data.results.current_page;
