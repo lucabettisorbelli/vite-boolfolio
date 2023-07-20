@@ -1,10 +1,12 @@
 <script>
-
+import { store } from './store';
+import axios from 'axios';
 export default {
   name: "AppVue",
 
   data() {
     return {
+      store,
       navLinks: [
         { route: "AppHome", label: "Home" },
         { route: "/about", label: "About Us" },
@@ -12,6 +14,24 @@ export default {
       ]
     }
   },
+  methods: {
+
+    getProjectsTotalNumber() {
+
+      if (this.store.totalProjectsNumber == 0) {
+
+        axios.get(this.store.apiUrl + "projects").then(response => {
+          this.store.totalProjectsNumber = response.data.results.total;
+        }).catch(err => {
+          this.loading = false;
+        });
+      }
+
+    },
+  },
+  created() {
+    this.getProjectsTotalNumber();
+  }
 }
 </script>
 
